@@ -1,21 +1,25 @@
 # .gitignore
-# ignore node_modules and yarn cache
-node_modules
-yarn.lock
-yarn/nodemodules
+# ignore node_modules and rust target dirs
+node_modules/
+target/
 
-# ignore rust build artifacts
-target
+# ignore IDE config files
+.idea/
+.vscode/
 
-# ignore cargo vendored crates
-vendor
+# ignore build artifacts
+dist/
+build/
 
-# ignore IDE metadata
-.idea
-.vscode
+# ignore docker containers
+.docker/
 
-# ignore other stuff
+# ignore macos and linux build artifacts
 .DS_Store
 Thumbs.db
-ehthumbs.db
-ehcache.db
+.cache/
+.cache/
+
+# ignore rust build artifacts
+Cargo.lock
+target/
