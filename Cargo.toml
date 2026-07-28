@@ -1,69 +1,16 @@
 [package]
-name = "curve25519"
+name = "my_project"
 version = "1.0.0"
 edition = "2021"
-description = "Rust implementation of the Curve25519 elliptic curve"
-homepage = "https://github.com/yourusername/curve25519"
-repository = "https://github.com/yourusername/curve25519"
-readme = "docs/README.md"
-keywords = ["elliptic curves", "Curve25519", "rust"]
-categories = ["lib"]
 
 [dependencies]
-clap = "3.3.0"
-elliptic-curves = "0.2.0"
-rand = "0.8.8"
-rustfmt = "1.65.1"
+serde = { version = "1.0.130", features = ["derive"] }
+serde_json = "1.0.68"
 
-[dev-dependencies]
-edition-dep-aliases = "0.1.0"
-
-[features]
-default = ["key_generation", "signature_generation", "scalar_multiplication"]
-key_generation = []
-signature_generation = []
-scalar_multiplication = []
-
-[package.metadata.docs]
-readme = "docs/README.md"
-
-[package.metadata.docs.rs]
-doc-config = "rustdoc"
+[profile.dev]
+opt-level = 0
+lto = true
 
 [profile.release]
-opt-level = "s"
+opt-level = 3
 lto = true
-panic = "unwind"
-
-[profile.debug]
-debug-assertions = true
-panic = "unwind"
-
-[lib]
-path = "src/lib.rs"
-
-[bin]
-path = "src/bin/main.rs"
-
-[features]
-key_generation = ["curve25519/keygen"]
-signature_generation = ["curve25519/signature"]
-scalar_multiplication = ["curve25519/scalar_mult"]
-
-[dependencies.curve25519]
-features = ["keygen", "signature", "scalar_mult"]
-
-[dependencies.curve25519.keygen]
-path = "src/keygen.rs"
-
-[dependencies.curve25519.signature]
-path = "src/signature.rs"
-
-[dependencies.curve25519.scalar_mult]
-path = "src/scalar_mult.rs"
-
-[package.metadata.docs]
-readme = "docs/README.md"
-
-[package.metadata.docs.rs]
-doc-config = "rustdoc"
